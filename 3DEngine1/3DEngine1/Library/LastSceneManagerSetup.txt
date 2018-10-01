@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/PillScene.unity
+  isLoaded: 1
+  isActive: 1
