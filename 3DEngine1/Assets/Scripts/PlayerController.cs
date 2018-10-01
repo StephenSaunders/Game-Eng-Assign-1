@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed;
-
     private Rigidbody rb;
 
     void Start()
@@ -16,12 +15,22 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
 
         rb.AddForce(movement * speed);
+
+      
+        if (Input.GetButton("Fire1") == true)
+        {
+            GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+        }
+        else
+        {
+            GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+        }
     }
     void OnTriggerEnter(Collider other)
     {
